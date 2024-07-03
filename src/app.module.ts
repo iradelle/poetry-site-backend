@@ -30,7 +30,7 @@ import { ConfigModule } from "@nestjs/config";
       UserModule,
       PoemModule,
       CategoryModule,],
-  controllers: [AppController, UserController, PoemController, CategoryController],
-  providers: [AppService, UserService, PoemService, CategoryService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
