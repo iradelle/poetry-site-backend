@@ -16,4 +16,27 @@ export class CategoryService {
     const category = this.categoryRepository.create(data);
     return await this.categoryRepository.save(category);
   }
+
+  async update(id: number, updateCategory: CreateUpdateCategoryDto) {
+    await this.categoryRepository.update(id, updateCategory);
+    return this.categoryRepository.findOneBy({ id });
+  }
+
+  async readAll() {
+    return this.categoryRepository.find();
+  }
+
+  async readOne(id: number) {
+    return this.categoryRepository.findOneBy({ id });
+  }
+
+  async delete(id: number) {
+    // Check if id is falsy
+    if (!id) {
+      throw new Error('Invalid id for deletion');
+    }
+
+    // Call the delete method with the provided id
+    return this.categoryRepository.delete(id);
+  }
 }
