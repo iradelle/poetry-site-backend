@@ -7,6 +7,7 @@ import {
   Patch,
   Param,
   Get,
+  Delete,
 } from '@nestjs/common';
 import { PoemService } from './poem.service';
 import { CreateUpdatePoemDto } from './create-update-poem.dto';
@@ -62,5 +63,10 @@ export class PoemController {
   @UseGuards(JwtGuard)
   readByCategory(@Param('categoryId') categoryId: number) {
     return this.poemService.readByCategory(categoryId);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.poemService.delete(id);
   }
 }

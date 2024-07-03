@@ -51,4 +51,8 @@ export class PoemService {
   async readByCategory(categoryId: number) {
     return await this.poemCategoryRepository.findBy({ categoryId: categoryId });
   }
+
+  async delete(id: number) {
+    return await this.poemRepository.delete(id);
+  }
 }
