@@ -1,5 +1,5 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
-import { PoemEntity } from './poem.entity';
+import { PoemEntity } from '../poem/poem.entity';
 import { CategoryEntity } from '../category/category.entity';
 
 @Entity('poem_category')

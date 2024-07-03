@@ -6,6 +6,4 @@ export class CreateUpdatePoemDto {
 
   @IsNotEmpty()
   content: string;
-
-  categories: string[];
 }

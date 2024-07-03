@@ -2,8 +2,8 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateUpdatePoem_categoryDto {
   @IsNotEmpty()
-  poem: string;
+  poemId: number;
 
   @IsNotEmpty()
-  category: string;
+  categoryId: number;
 }
