@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import { InjectRepository } from '@nestjs/typeorm';
 import { PoemEntity } from './poem.entity';
 import { Repository } from 'typeorm';
@@ -16,9 +16,17 @@ export class PoemService {
   ) {}
 
   async createPoem(createPoemDto: CreateUpdatePoemDto, userId: number) {
-    const data = { ...createPoemDto, user: { id: userId } };
+    try {
+      const data = { ...createPoemDto, user: { id: userId } };
+      const poem = this.poemRepository.create(data);
+      return await this.poemRepository.save(poem);
+    } catch (error) {
+      console.error('Error creating poem:', error);
+      throw new InternalServerErrorException('Error creating poem');
+    }
+    /*const data = { ...createPoemDto, user: { id: userId } };
     const poem = this.poemRepository.create(data);
-    return await this.poemRepository.save(poem);
+    return await this.poemRepository.save(poem);*/
   }
 
   async createPoemCategory(

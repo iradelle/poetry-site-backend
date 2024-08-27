@@ -25,7 +25,7 @@ export class PoemController {
     return this.poemService.createPoem(createPoemDto, user_id);
   }
 
-  @Post()
+  @Post('category')
   @UseGuards(JwtGuard)
   createPoemCategory(
     @Body() createPoemCategoryDto: CreateUpdatePoem_categoryDto,

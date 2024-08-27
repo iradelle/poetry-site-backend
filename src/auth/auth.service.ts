@@ -12,12 +12,13 @@ import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly userService: UserService,
+    private userService: UserService,
     private jwtService: JwtService,
   ) {}
 
   async validate(loginDto: LoginDto) {
     console.log('Service Auth validate');
+    console.log('JWT_SECRET:', process.env.JWT_SECRET);
     //preveri, če user v bazi s tem emailom obstaja
     const user: User = await this.userService.getUserByEmail(loginDto.email);
     if (!user) {
